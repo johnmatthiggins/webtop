@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 	"net/http"
 	"os/exec"
 	"regexp"
@@ -32,7 +33,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		output = string(cmdOutput) + output
+		output = strings.TrimPrefix(string(cmdOutput), "\n") + output
 	} else {
 		// default to neofetch
 		cmd2 := exec.Command("sh", "-c", "neofetch | aha --no-header")
@@ -40,7 +41,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		output = string(cmdOutput) + output
+		output = strings.TrimPrefix(string(cmdOutput), "\n") + output
 	}
 
 	cmd := exec.Command("top", "-bn1")
