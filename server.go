@@ -16,7 +16,7 @@ const formatString string = `
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
 </head>
-<body>
+<body style="background-color:black;color:white;">
 <pre>%s</pre>
 </body>
 </html>
@@ -35,6 +35,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", home)
-	fmt.Println("STARTING SERVER...")
+	fmt.Println("...STARTING SERVER...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
