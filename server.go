@@ -36,5 +36,5 @@ func home(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", home)
 	fmt.Println("...STARTING SERVER...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8880", nil))
 }
