@@ -27,7 +27,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	output := ""
 
 	if _, err := exec.LookPath("fastfetch"); err == nil {
-		cmd2 := exec.Command("sh", "-c", "fastfetch | aha")
+		cmd2 := exec.Command("sh", "-c", "fastfetch | aha --no-header")
 		cmdOutput, err := cmd2.Output()
 		if err != nil {
 			log.Fatal(err)
@@ -35,7 +35,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		output = string(cmdOutput) + output
 	} else {
 		// default to neofetch
-		cmd2 := exec.Command("sh", "-c", "neofetch | aha")
+		cmd2 := exec.Command("sh", "-c", "neofetch | aha --no-header")
 		cmdOutput, err := cmd2.Output()
 		if err != nil {
 			log.Fatal(err)
