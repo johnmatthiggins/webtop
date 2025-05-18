@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
-	"strings"
 	"net/http"
 	"os/exec"
 	"regexp"
+	"strings"
 )
 
 const formatString string = `
@@ -49,7 +49,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	output += string(cmdOutput)
+	output += "\n" + string(cmdOutput)
 	pattern := regexp.MustCompile("(\\w+)@(\\w+)")
 	output = pattern.ReplaceAllString(output, "\n\n$1@$2")
 
